@@ -1,14 +1,14 @@
-﻿namespace CustomerShoppingApp.Models
+﻿using System.Collections.Generic;
+
+namespace CustomerShoppingApp.Models
 {
     public class Items
     {
         public int id { get; set; }
         public int ShoppingCartId { get; set; }
-        public string name { get; set; }
-        public double price { get; set; }
-        public string description { get; set; }
-        public float size { get; set; }
-        public float weight { get; set; }
-        public string brand { get; set; }
+        public Shoes shoes { get; set; }
+        public Garden garden { get; set; }
+        public Furniture furniture { get; set; }
+        public Clothes clothes { get; set; }
     }
 }
