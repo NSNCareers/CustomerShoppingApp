@@ -9,9 +9,10 @@ namespace CustomerShoppingApp.Models
         public string name { get; set; }
         public string gender { get; set; }
         public int age { get; set; }
+        public bool IsActive { get; set; }
         // So that entity framework will populate address when getting shoppingcart from DB
         public virtual List<Address> address { get; set; }
-        public BankDetails bankDetails{ get; set; }
+        public BankDetail bankDetail{ get; set; }
         public ShoppingCart shoppingCart { get; set; }
     }
 }

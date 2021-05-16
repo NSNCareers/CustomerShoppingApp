@@ -37,11 +37,11 @@ namespace CustomerShoppingApp
         public void ConfigureServices(IServiceCollection services)
         {
             //Connection string 
-            var conString = _configuration.GetConnectionString("ShoppingCartDBConnection");
+            var conString = _configuration.GetConnectionString("CustomerShoppingCartDBConnection");
             // Secret Password
             var appSecret = _configuration.GetConnectionString("Secret");
 
-            services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = Newtonsoft.Json);
+            //services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = Newtonsoft.Json);
             services.AddDbContextPool<CustomerShoppingCartContext>(options =>
             options.UseSqlServer(conString).EnableSensitiveDataLogging());
             services.ConfigureShoppingCartServices();
