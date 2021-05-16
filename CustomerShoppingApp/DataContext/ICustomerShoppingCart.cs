@@ -1,5 +1,5 @@
 ﻿using System;
-namespace CustomerShoppingApp.Interface
+namespace CustomerShoppingApp.DataContext
 {
     public interface ICustomerShoppingCart
     {
