@@ -2,7 +2,7 @@
 
 namespace CustomerShoppingApp.Models
 {
-    public class BankDetails
+    public class BankDetail
     {
         public string bankName { get; set; }
         public long accountNumber { get; set; }

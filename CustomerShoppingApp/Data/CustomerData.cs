@@ -28,7 +28,7 @@ namespace CustomerShoppingApp.Data
                         country = "USA"
                     }
                 },
-                bankDetails = new BankDetails
+                bankDetail = new BankDetail
                 {
                     bankName = "Coventry Building Soceity",
                     accountNumber = 12338776353,
@@ -39,16 +39,16 @@ namespace CustomerShoppingApp.Data
                 shoppingCart = new ShoppingCart
                 {
                     shoppingCartName = "House Items",
-                    item = new Items
+                    item = new Item
                     {
-                        clothes = new Clothes
+                        cloth = new Cloth
                         {
                             price = 34.5,
                             size = 22,
                             brand = "Hugo Boss",
                             clothType = "Jeans"
                         },
-                        shoes = new Shoes
+                        shoe = new Shoe
                         {
                             price = 234.2,
                             size = 65,

@@ -18,14 +18,17 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.6" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interface\" />
-    <Folder Include="Interface\" />
+    <Folder Include="DataContext\" />
+    <Folder Include="DataContext\" />
     <Folder Include="Context\" />
     <Folder Include="DAL\" />
     <Folder Include="Data\" />
+    <Folder Include="Dependency\" />
+    <Folder Include="Token\" />
   </ItemGroup>
 
 </Project>
