@@ -21,52 +21,60 @@ namespace CustomerShoppingApp.Controllers
         }
 
         [HttpGet("GetCustomerWithId/{id}")]
-        public async Task<IActionResult>  GetCustomer([Required]int id, string name)
+        public async Task<IActionResult>  GetCustomerWithId([Required]int id)
         {
+            var result = await _customerShoppingCart.GetCustomerWithID(id);
 
-            return Ok();
+            return result;
         }
 
         [HttpGet("GetAllCustomers")]
         public async Task<IActionResult> GetAllCustomers()
         {
-            return Ok();
+            var result = await _customerShoppingCart.GetAllCustomers();
+
+            return result;
         }
 
         [HttpGet("GetAllActiveCustomers")]
-        public async Task<IActionResult> GetCustomerShoppingCart()
+        public async Task<IActionResult> GetActiveCustomers()
         {
-            return Ok();
-        }
+            var result = await _customerShoppingCart.GetActiveCustomers();
 
-        [HttpGet("GetALlItems")]
-        public async Task<IActionResult> GetAllItems(int id,string firstName)
-        {
-            return Ok();
-        }
-
-        [HttpGet("GetAllAddresses")]
-        public async Task<IActionResult> GetCustomerAddress(int id, string firstName)
-        {
-            return Ok();
+            return result;
         }
 
         [HttpPost("CreateNewCustomer")]
-        public async Task<IActionResult> CreateCustomer([Required] Customer customer)
+        public async Task<IActionResult> CreateCustomer([FromBody] Customer customer)
         {
-            return Created("",customer);
+            var result = await _customerShoppingCart.CreateNewCustomer(customer);
+
+            return result;
         }
 
         [HttpPut("UpdateCustomer")]
-        public async Task<IActionResult> UpdateCustomer([Required] Customer customer)
+        public async Task<IActionResult> UpdateCustomer([FromBody] Customer customer)
         {
-            return Accepted(customer);
+            var result = await _customerShoppingCart.UpdateExistingCustomer(customer);
+
+            return result;
         }
 
         [HttpDelete("DeleteExistingCustomer")]
-        public async Task<IActionResult> DeleteCustomer([Required]int id)
+        public async Task<IActionResult> DeleteCustomer([Required]int ID)
         {
-            return Ok();
+            var customer = new Customer { id = ID };
+            var result = await _customerShoppingCart.DeletCustomer(customer);
+
+            return result;
+        }
+
+        [HttpPost("ChangeCustomerState")]
+        public async Task<IActionResult> ChangeCustomerState([Required] int id)
+        {
+            var result = await _customerShoppingCart.ChangeState(id);
+
+            return result;
         }
     }
 }

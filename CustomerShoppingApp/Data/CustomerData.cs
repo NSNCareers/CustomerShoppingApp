@@ -4,7 +4,7 @@ using CustomerShoppingApp.Models;
 
 namespace CustomerShoppingApp.Data
 {
-    public class CustomerData : ICustomer
+    public class CustomerData : ICustomerData
     {
         public CustomerData()
         {
@@ -17,7 +17,7 @@ namespace CustomerShoppingApp.Data
                 title = "Mr",
                 age = 34,
                 gender = "Male",
-                name = "Jacob",
+                firstName = "Jacob",
                 address = new List<Address>
                 {
                     new Address
@@ -33,7 +33,7 @@ namespace CustomerShoppingApp.Data
                     bankName = "Coventry Building Soceity",
                     accountNumber = 12338776353,
                     sortCode = 1234,
-                    expiryDate = DateTime.Now
+                    expiryDate = "09/24"
 
                 },
                 shoppingCart = new ShoppingCart
@@ -50,7 +50,7 @@ namespace CustomerShoppingApp.Data
                         },
                         shoe = new Shoe
                         {
-                            price = 234.2,
+                            price = 234,
                             size = 65,
                             brand = "Gucci",
                             colour = "Red"

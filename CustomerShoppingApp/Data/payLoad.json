@@ -1,0 +1,62 @@
+{
+  "id": 0,
+  "title": "Mr",
+  "firstName": "Lima",
+  "gender": "Male",
+  "age": 22,
+  "email": "Lima@gmail.com",
+  "isActive": true,
+  "address": [
+    {
+      "id": 0,
+      "street": "London Street",
+      "houseNumber": 20,
+      "postCode": "CV12 1HG",
+      "country": "UK"
+    }
+  ],
+  "bankDetail": {
+    "id": 0,
+    "bankName": "Bank Of USA",
+    "accountNumber": 121212,
+    "sortCode": 1212,
+    "expiryDate": "2/25"
+  },
+  "shoppingCart": {
+    "id": 0,
+    "customerId": 0,
+    "shoppingCartName": "Holiday List",
+    "item": {
+      "id": 0,
+      "shoppingCartId": 0,
+      "shoe": {
+        "id": 0,
+        "price": 122,
+        "size": 12,
+        "brand": "Boss",
+        "colour": "Blue"
+      },
+      "garden": {
+        "id": 0,
+        "plantName": "Rose Flower",
+        "price": 220,
+        "weight": 20
+      },
+      "furniture": {
+        "id": 0,
+        "furnitureName": "Sofa",
+        "price": 330,
+        "colour": "Blue",
+        "material": "Leather"
+      },
+      "cloth": {
+        "id": 0,
+        "price": 660,
+        "size": 60,
+        "brand": "Gucci",
+        "clothType": "Velvert"
+      }
+    }
+  },
+  "created": "2021-05-17T15:52:18.628Z"
+}
