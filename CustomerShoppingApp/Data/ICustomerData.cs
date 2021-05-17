@@ -3,7 +3,7 @@ using CustomerShoppingApp.Models;
 
 namespace CustomerShoppingApp.Data
 {
-    public interface ICustomer
+    public interface ICustomerData
     {
         Customer InitializeCustomer();
     }

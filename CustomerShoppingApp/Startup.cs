@@ -1,23 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CustomerShoppingApp.Context;
 using CustomerShoppingApp.Dependency;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 
 namespace CustomerShoppingApp
 {
@@ -28,7 +21,7 @@ namespace CustomerShoppingApp
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -41,7 +34,6 @@ namespace CustomerShoppingApp
             // Secret Password
             var appSecret = _configuration.GetConnectionString("Secret");
 
-            //services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = Newtonsoft.Json);
             services.AddDbContextPool<CustomerShoppingCartContext>(options =>
             options.UseSqlServer(conString).EnableSensitiveDataLogging());
             services.ConfigureShoppingCartServices();
@@ -100,7 +92,7 @@ namespace CustomerShoppingApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, CustomerShoppingCartContext context)
         {
             if (env.IsDevelopment())
             {
@@ -119,6 +111,7 @@ namespace CustomerShoppingApp
             {
                 endpoints.MapControllers();
             });
+            context.Database.Migrate();
         }
     }
 }

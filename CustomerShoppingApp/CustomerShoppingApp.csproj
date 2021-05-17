@@ -26,7 +26,6 @@
     <Folder Include="DataContext\" />
     <Folder Include="Context\" />
     <Folder Include="DAL\" />
-    <Folder Include="Data\" />
     <Folder Include="Dependency\" />
     <Folder Include="Token\" />
   </ItemGroup>

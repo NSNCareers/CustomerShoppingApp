@@ -1,17 +1,17 @@
-﻿using System;
+﻿using CustomerShoppingApp.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using CustomerShoppingApp.Models;
 
 namespace CustomerShoppingApp.DataContext
 {
     public interface ICustomerShoppingCart
     {
-        Task<Customer> GetCustomer(int id,string fistName);
-        Task<Customer> DeletCustomer(int id);
-        Task<Customer> GetAllCustomers();
-        Task<Customer> CreateNewCustomer(Customer customer);
-        Task<Customer> GetAddress(int id, string fistName);
-        Task<Customer> GetItems(int id, string fistName);
-        Task<Customer> UpdateExistingCustomer(int id);
+        Task<IActionResult> GetCustomerWithID(int id);
+        Task<IActionResult> DeletCustomer(Customer customer);
+        Task<IActionResult> GetAllCustomers();
+        Task<IActionResult> CreateNewCustomer(Customer customer);
+        Task<IActionResult> UpdateExistingCustomer(Customer customer);
+        Task<IActionResult> ChangeState(int id);
+        Task<IActionResult> GetActiveCustomers();
     }
 }
