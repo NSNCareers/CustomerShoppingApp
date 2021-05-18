@@ -22,21 +22,24 @@ namespace CustomerShoppingApp.Migrations
             modelBuilder.Entity("CustomerShoppingApp.Models.Address", b =>
                 {
                     b.Property<int>("id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("Customerid")
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("country")
                         .IsRequired()
-                        .HasColumnType("varchar(12)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<int>("houseNumber")
                         .HasColumnType("int");
 
                     b.Property<string>("postCode")
                         .IsRequired()
-                        .HasColumnType("varchar(8)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("street")
                         .IsRequired()
@@ -44,7 +47,8 @@ namespace CustomerShoppingApp.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Customerid");
+                    b.HasIndex("CustomerId")
+                        .IsUnique();
 
                     b.ToTable("Address");
                 });
@@ -52,11 +56,17 @@ namespace CustomerShoppingApp.Migrations
             modelBuilder.Entity("CustomerShoppingApp.Models.BankDetail", b =>
                 {
                     b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("accountNumber")
                         .IsRequired()
-                        .HasColumnType("varchar(8)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("bankName")
                         .HasColumnType("nvarchar(max)");
@@ -67,9 +77,12 @@ namespace CustomerShoppingApp.Migrations
 
                     b.Property<string>("sortCode")
                         .IsRequired()
-                        .HasColumnType("varchar(6)");
+                        .HasColumnType("varchar(20)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("CustomerId")
+                        .IsUnique();
 
                     b.ToTable("BankDetails");
                 });
@@ -77,13 +90,19 @@ namespace CustomerShoppingApp.Migrations
             modelBuilder.Entity("CustomerShoppingApp.Models.Cloth", b =>
                 {
                     b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ItemId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("brand")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(200)");
 
                     b.Property<string>("clothType")
-                        .HasColumnType("varchar(12)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<double>("price")
                         .HasColumnType("float");
@@ -93,13 +112,18 @@ namespace CustomerShoppingApp.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("ItemId")
+                        .IsUnique();
+
                     b.ToTable("Cloth");
                 });
 
             modelBuilder.Entity("CustomerShoppingApp.Models.Customer", b =>
                 {
                     b.Property<int>("id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
@@ -112,20 +136,17 @@ namespace CustomerShoppingApp.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(3)");
 
-                    b.Property<int?>("bankDetailid")
-                        .HasColumnType("int");
-
                     b.Property<string>("email")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("firstName")
                         .IsConcurrencyToken()
                         .IsRequired()
-                        .HasColumnType("varchar(15)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("gender")
                         .IsRequired()
-                        .HasColumnType("varchar(6)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("title")
                         .IsRequired()
@@ -133,32 +154,39 @@ namespace CustomerShoppingApp.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("bankDetailid");
-
                     b.ToTable("Customer", "Users");
                 });
 
             modelBuilder.Entity("CustomerShoppingApp.Models.Furniture", b =>
                 {
                     b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ItemId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("colour")
                         .IsRequired()
-                        .HasColumnType("varchar(6)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("furnitureName")
                         .IsRequired()
-                        .HasColumnType("varchar(12)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("material")
                         .IsRequired()
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<double>("price")
                         .HasColumnType("float");
 
                     b.HasKey("id");
+
+                    b.HasIndex("ItemId")
+                        .IsUnique();
 
                     b.ToTable("Furniture");
                 });
@@ -166,11 +194,17 @@ namespace CustomerShoppingApp.Migrations
             modelBuilder.Entity("CustomerShoppingApp.Models.Garden", b =>
                 {
                     b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ItemId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("plantName")
                         .IsRequired()
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(5,2)");
@@ -180,27 +214,21 @@ namespace CustomerShoppingApp.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("ItemId")
+                        .IsUnique();
+
                     b.ToTable("Garden");
                 });
 
             modelBuilder.Entity("CustomerShoppingApp.Models.Item", b =>
                 {
                     b.Property<int>("id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ShoppingCartId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("clothid")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("furnitureid")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("gardenid")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("shoeid")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.HasKey("id");
@@ -208,28 +236,26 @@ namespace CustomerShoppingApp.Migrations
                     b.HasIndex("ShoppingCartId")
                         .IsUnique();
 
-                    b.HasIndex("clothid");
-
-                    b.HasIndex("furnitureid");
-
-                    b.HasIndex("gardenid");
-
-                    b.HasIndex("shoeid");
-
                     b.ToTable("Item");
                 });
 
             modelBuilder.Entity("CustomerShoppingApp.Models.Shoe", b =>
                 {
                     b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ItemId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("brand")
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("colour")
                         .IsRequired()
-                        .HasColumnType("varchar(6)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(5,2)");
@@ -239,15 +265,21 @@ namespace CustomerShoppingApp.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("ItemId")
+                        .IsUnique();
+
                     b.ToTable("Shoe");
                 });
 
             modelBuilder.Entity("CustomerShoppingApp.Models.ShoppingCart", b =>
                 {
                     b.Property<int>("id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("shoppingCartName")
@@ -265,17 +297,46 @@ namespace CustomerShoppingApp.Migrations
             modelBuilder.Entity("CustomerShoppingApp.Models.Address", b =>
                 {
                     b.HasOne("CustomerShoppingApp.Models.Customer", null)
-                        .WithMany("address")
-                        .HasForeignKey("Customerid");
+                        .WithOne("address")
+                        .HasForeignKey("CustomerShoppingApp.Models.Address", "CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("CustomerShoppingApp.Models.Customer", b =>
+            modelBuilder.Entity("CustomerShoppingApp.Models.BankDetail", b =>
                 {
-                    b.HasOne("CustomerShoppingApp.Models.BankDetail", "bankDetail")
-                        .WithMany()
-                        .HasForeignKey("bankDetailid");
+                    b.HasOne("CustomerShoppingApp.Models.Customer", null)
+                        .WithOne("bankDetail")
+                        .HasForeignKey("CustomerShoppingApp.Models.BankDetail", "CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.Navigation("bankDetail");
+            modelBuilder.Entity("CustomerShoppingApp.Models.Cloth", b =>
+                {
+                    b.HasOne("CustomerShoppingApp.Models.Item", null)
+                        .WithOne("cloth")
+                        .HasForeignKey("CustomerShoppingApp.Models.Cloth", "ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CustomerShoppingApp.Models.Furniture", b =>
+                {
+                    b.HasOne("CustomerShoppingApp.Models.Item", null)
+                        .WithOne("furniture")
+                        .HasForeignKey("CustomerShoppingApp.Models.Furniture", "ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CustomerShoppingApp.Models.Garden", b =>
+                {
+                    b.HasOne("CustomerShoppingApp.Models.Item", null)
+                        .WithOne("garden")
+                        .HasForeignKey("CustomerShoppingApp.Models.Garden", "ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CustomerShoppingApp.Models.Item", b =>
@@ -285,30 +346,15 @@ namespace CustomerShoppingApp.Migrations
                         .HasForeignKey("CustomerShoppingApp.Models.Item", "ShoppingCartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.HasOne("CustomerShoppingApp.Models.Cloth", "cloth")
-                        .WithMany()
-                        .HasForeignKey("clothid");
-
-                    b.HasOne("CustomerShoppingApp.Models.Furniture", "furniture")
-                        .WithMany()
-                        .HasForeignKey("furnitureid");
-
-                    b.HasOne("CustomerShoppingApp.Models.Garden", "garden")
-                        .WithMany()
-                        .HasForeignKey("gardenid");
-
-                    b.HasOne("CustomerShoppingApp.Models.Shoe", "shoe")
-                        .WithMany()
-                        .HasForeignKey("shoeid");
-
-                    b.Navigation("cloth");
-
-                    b.Navigation("furniture");
-
-                    b.Navigation("garden");
-
-                    b.Navigation("shoe");
+            modelBuilder.Entity("CustomerShoppingApp.Models.Shoe", b =>
+                {
+                    b.HasOne("CustomerShoppingApp.Models.Item", null)
+                        .WithOne("shoe")
+                        .HasForeignKey("CustomerShoppingApp.Models.Shoe", "ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CustomerShoppingApp.Models.ShoppingCart", b =>
@@ -322,9 +368,28 @@ namespace CustomerShoppingApp.Migrations
 
             modelBuilder.Entity("CustomerShoppingApp.Models.Customer", b =>
                 {
-                    b.Navigation("address");
+                    b.Navigation("address")
+                        .IsRequired();
+
+                    b.Navigation("bankDetail")
+                        .IsRequired();
 
                     b.Navigation("shoppingCart")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CustomerShoppingApp.Models.Item", b =>
+                {
+                    b.Navigation("cloth")
+                        .IsRequired();
+
+                    b.Navigation("furniture")
+                        .IsRequired();
+
+                    b.Navigation("garden")
+                        .IsRequired();
+
+                    b.Navigation("shoe")
                         .IsRequired();
                 });
 

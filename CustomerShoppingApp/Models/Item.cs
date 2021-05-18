@@ -8,10 +8,10 @@ namespace CustomerShoppingApp.Models
     public class Item
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [ForeignKey("ShoppingCart")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ShoppingCartId { get; set; }
         [Required]
         public virtual Shoe shoe { get; set; }

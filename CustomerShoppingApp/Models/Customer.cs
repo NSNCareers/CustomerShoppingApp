@@ -9,27 +9,27 @@ namespace CustomerShoppingApp.Models
     public class Customer
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [Column(TypeName = "varchar(3)")]
         [Required]
         public string title { get; set; }
-        [Column(TypeName = "varchar(15)")]
+        [Column(TypeName = "varchar(20)")]
         [Required]
         [ConcurrencyCheck]
         public string firstName { get; set; }
-        [Column(TypeName = "varchar(6)")]
+        [Column(TypeName = "varchar(20)")]
         [Required]
         public string gender { get; set; }
         [Column(TypeName = "varchar(3)")]
         [Required]
         public int age { get; set; }
-        [Column(TypeName = "varchar(10)")]
+        [Column(TypeName = "varchar(20)")]
         public string email { get; set; }
         public bool IsActive { get; set; }
         // So that entity framework will populate address when getting shoppingcart from DB
         [Required]
-        public virtual List<Address> address { get; set; }
+        public virtual Address address { get; set; }
         [Required]
         public virtual BankDetail bankDetail{ get; set; }
         [Required]

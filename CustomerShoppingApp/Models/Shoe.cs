@@ -7,15 +7,18 @@ namespace CustomerShoppingApp.Models
     public class Shoe
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
+        [ForeignKey("Item")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ItemId { get; set; }
         [Required]
         [Column(TypeName = "decimal(5,2)")]
         public decimal price { get; set; }
         public float size { get; set; }
-        [Column(TypeName = "varchar(10)")]
+        [Column(TypeName = "varchar(20)")]
         public string brand { get; set; }
-        [Column(TypeName = "varchar(6)")]
+        [Column(TypeName = "varchar(20)")]
         [Required]
         public string colour { get; set; }
     }

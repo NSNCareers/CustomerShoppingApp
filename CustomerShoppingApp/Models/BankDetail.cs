@@ -8,13 +8,16 @@ namespace CustomerShoppingApp.Models
     public class BankDetail
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
+        [ForeignKey("Customer")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CustomerId { get; set; }
         public string bankName { get; set; }
-        [Column(TypeName = "varchar(8)")]
+        [Column(TypeName = "varchar(20)")]
         [Required]
         public long accountNumber { get; set; }
-        [Column(TypeName = "varchar(6)")]
+        [Column(TypeName = "varchar(20)")]
         [Required]
         public int sortCode { get; set; }
         [Required]

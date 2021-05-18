@@ -7,10 +7,10 @@ namespace CustomerShoppingApp.Models
     public class ShoppingCart
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         [ForeignKey("Customer")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CustomerId { get; set; }
         [Column(TypeName = "varchar(12)")]
         [Required]

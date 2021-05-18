@@ -47,6 +47,18 @@ namespace CustomerShoppingApp.DAL
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        public void UpdateRange<T>(T obj) where T : class
+        {
+            var set = _context.Set<T>();
+            set.AttachRange(obj);
+            _context.Entry(obj).State = EntityState.Modified;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public IQueryable<T> Query<T>() where T : class
         {

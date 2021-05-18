@@ -18,15 +18,12 @@ namespace CustomerShoppingApp.Data
                 age = 34,
                 gender = "Male",
                 firstName = "Jacob",
-                address = new List<Address>
-                {
-                    new Address
-                    {
-                        street = "Lonkuam Street",
-                        houseNumber = 21,
-                        postCode = "CV66 7HG",
-                        country = "USA"
-                    }
+                address = new Address{
+
+                    street = "Lonkuam Street",
+                    houseNumber = 21,
+                    postCode = "CV66 7HG",
+                    country = "USA"
                 },
                 bankDetail = new BankDetail
                 {
