@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomerShoppingApp.Migrations
 {
     [DbContext(typeof(CustomerShoppingCartContext))]
-    [Migration("20210518144929_InitialCreate")]
+    [Migration("20210519142223_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

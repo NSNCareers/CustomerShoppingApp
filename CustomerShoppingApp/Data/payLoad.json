@@ -1,0 +1,66 @@
+{
+  "id": 0,
+  "title": "Mr",
+  "firstName": "Hunter",
+  "gender": "Male",
+  "age": 40,
+  "email": "Hunter@gmail.com",
+  "isActive": true,
+  "address": {
+    "id": 0,
+    "customerId": 0,
+    "street": "Hunter Street",
+    "houseNumber": 20,
+    "postCode": "CV2 6HT",
+    "country": "UK"
+  },
+  "bankDetail": {
+    "id": 0,
+    "customerId": 0,
+    "bankName": "Sterline Bank",
+    "accountNumber": 434343430,
+    "sortCode": 33330,
+    "expiryDate": "22/22"
+  },
+  "shoppingCart": {
+    "id": 0,
+    "customerId": 0,
+    "shoppingCartName": "My Cart",
+    "item": {
+      "id": 0,
+      "shoppingCartId": 0,
+      "shoe": {
+        "id": 0,
+        "itemId": 0,
+        "price": 330,
+        "size": 330,
+        "brand": "Hugo",
+        "colour": "Blue"
+      },
+      "garden": {
+        "id": 0,
+        "itemId": 0,
+        "plantName": "Flowers",
+        "price": 330,
+        "weight": 330
+      },
+      "furniture": {
+        "id": 0,
+        "itemId": 0,
+        "furnitureName": "Sofa",
+        "price": 320,
+        "colour": "Black",
+        "material": "Leather"
+      },
+      "cloth": {
+        "id": 0,
+        "itemId": 0,
+        "price": 440,
+        "size": 40,
+        "brand": "Gucci",
+        "clothType": "Shirt"
+      }
+    }
+  },
+  "created": "2021-05-19T14:23:40.159Z"
+}

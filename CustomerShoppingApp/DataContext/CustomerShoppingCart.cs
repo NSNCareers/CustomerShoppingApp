@@ -3,6 +3,7 @@ using CustomerShoppingApp.DAL;
 using CustomerShoppingApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -240,6 +241,7 @@ namespace CustomerShoppingApp.DataContext
                     return new NotFoundObjectResult($"No Customer with id = {customer.id} was found in the database");
                 }
 
+                
                 //To solve the problem of tracking entity. Make sure entity is in stable state
                 _customerShoppingCartContext.Entry(resultsCustomerID).State = EntityState.Detached;
                 _dataBaseChanges.Update(customer.address);
@@ -249,7 +251,13 @@ namespace CustomerShoppingApp.DataContext
                 _dataBaseChanges.Update(customer.shoppingCart.item.furniture);
                 _dataBaseChanges.Update(customer.shoppingCart.item.cloth);
                 _dataBaseChanges.Update(customer.shoppingCart.item.garden);
+                var changes = _customerShoppingCartContext.ChangeTracker.HasChanges();
                 await _dataBaseChanges.CommitAsync();
+                
+                if (!changes)
+                {
+                    return new OkObjectResult($"No changes are being tracked for customer with id = {customer.id}");
+                }
                 return new OkObjectResult($"Successfully Updated Customer with id = {customer.id}");
             }
             return new BadRequestObjectResult("Customer cannot be null");
@@ -272,7 +280,7 @@ namespace CustomerShoppingApp.DataContext
                     }
                     else
                     {
-                        return new OkObjectResult($"Customer with ID: {id} does not exist in database");
+                        return new OkObjectResult($"Customer with ID: {id} and FirstName {firstName} does not exist in database");
                     }
                 }
                 catch (Exception e)
@@ -305,7 +313,7 @@ namespace CustomerShoppingApp.DataContext
                     }
                     else
                     {
-                        return new OkObjectResult($"Customer with ID: {id} does not exist in database");
+                        return new OkObjectResult($"Customer with ID: {id} and FirstName {firstName} does not exist in database");
                     }
                 }
                 catch (Exception e)
@@ -333,7 +341,7 @@ namespace CustomerShoppingApp.DataContext
                     }
                     else
                     {
-                        return new OkObjectResult($"Customer with ID: {id} does not exist in database");
+                        return new OkObjectResult($"Customer with ID: {id} and FirstName {firstName} does not exist in database");
                     }
                 }
                 catch (Exception e)
