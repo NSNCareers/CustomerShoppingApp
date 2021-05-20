@@ -16,21 +16,23 @@ namespace CustomerShoppingApp.Token
             _appSecret = configuration.GetConnectionString("Secret");
         }
 
-        public string GenerateToken(int userId)
+        public string GenerateToken()
         {
+            Random random = new Random();
+            var number = random.Next(1,100000000);
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSecret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, userId.ToString()),
+                    new Claim(ClaimTypes.Name, number.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
         }

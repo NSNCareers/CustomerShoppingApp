@@ -1,4 +1,5 @@
-﻿using CustomerShoppingApp.Models;
+﻿using CustomerShoppingApp.Data;
+using CustomerShoppingApp.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -39,6 +40,17 @@ namespace CustomerShoppingApp.Context
             modelBuilder.Entity<Item>();
             modelBuilder.Entity<Shoe>();
             modelBuilder.Entity<ShoppingCart>();
+
+            // Add data to DB
+            modelBuilder.SeedShoeData();
+            modelBuilder.SeedAddressData();
+            modelBuilder.SeedBankDetailData();
+            modelBuilder.SeedBItemData();
+            modelBuilder.SeedClothData();
+            modelBuilder.SeedCustomerData();
+            modelBuilder.SeedFurnitureData();
+            modelBuilder.SeedGardenData();
+            modelBuilder.SeedShoppingCartData();
         }
     }
 }
