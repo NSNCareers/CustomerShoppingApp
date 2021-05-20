@@ -7,6 +7,7 @@ namespace CustomerShoppingApp.DAL
     {
         Task AddAsync<T>(T obj) where T : class;
         void Update<T>(T obj) where T : class;
+        void UpdateRange<T>(T obj) where T : class;
         IQueryable<T> Query<T>() where T : class;
         Task CommitAsync();
         void Attach<T>(T obj) where T : class;

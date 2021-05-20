@@ -1,62 +1,66 @@
 {
   "id": 0,
   "title": "Mr",
-  "firstName": "Lima",
+  "firstName": "Hunter",
   "gender": "Male",
-  "age": 22,
-  "email": "Lima@gmail.com",
+  "age": 40,
+  "email": "Hunter@gmail.com",
   "isActive": true,
-  "address": [
-    {
-      "id": 0,
-      "street": "London Street",
-      "houseNumber": 20,
-      "postCode": "CV12 1HG",
-      "country": "UK"
-    }
-  ],
+  "address": {
+    "id": 0,
+    "customerId": 0,
+    "street": "Hunter Street",
+    "houseNumber": 20,
+    "postCode": "CV2 6HT",
+    "country": "UK"
+  },
   "bankDetail": {
     "id": 0,
-    "bankName": "Bank Of USA",
-    "accountNumber": 121212,
-    "sortCode": 1212,
-    "expiryDate": "2/25"
+    "customerId": 0,
+    "bankName": "Sterline Bank",
+    "accountNumber": 434343430,
+    "sortCode": 33330,
+    "expiryDate": "22/22"
   },
   "shoppingCart": {
     "id": 0,
     "customerId": 0,
-    "shoppingCartName": "Holiday List",
+    "shoppingCartName": "My Cart",
     "item": {
       "id": 0,
       "shoppingCartId": 0,
       "shoe": {
         "id": 0,
-        "price": 122,
-        "size": 12,
-        "brand": "Boss",
+        "itemId": 0,
+        "price": 330,
+        "size": 330,
+        "brand": "Hugo",
         "colour": "Blue"
       },
       "garden": {
         "id": 0,
-        "plantName": "Rose Flower",
-        "price": 220,
-        "weight": 20
+        "itemId": 0,
+        "plantName": "Flowers",
+        "price": 330,
+        "weight": 330
       },
       "furniture": {
         "id": 0,
+        "itemId": 0,
         "furnitureName": "Sofa",
-        "price": 330,
-        "colour": "Blue",
+        "price": 320,
+        "colour": "Black",
         "material": "Leather"
       },
       "cloth": {
         "id": 0,
-        "price": 660,
-        "size": 60,
+        "itemId": 0,
+        "price": 440,
+        "size": 40,
         "brand": "Gucci",
-        "clothType": "Velvert"
+        "clothType": "Shirt"
       }
     }
   },
-  "created": "2021-05-17T15:52:18.628Z"
+  "created": "2021-05-19T14:23:40.159Z"
 }

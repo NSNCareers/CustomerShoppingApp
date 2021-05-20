@@ -36,7 +36,7 @@ namespace CustomerShoppingApp
 
             services.AddDbContextPool<CustomerShoppingCartContext>(options =>
             options.UseSqlServer(conString).EnableSensitiveDataLogging());
-            services.ConfigureShoppingCartServices();
+            services.ConfigureCustomerShoppingCartServices();
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;

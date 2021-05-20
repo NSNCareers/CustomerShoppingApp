@@ -7,17 +7,20 @@ namespace CustomerShoppingApp.Models
     public class Furniture
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        [Column(TypeName = "varchar(12)")]
+        [ForeignKey("Item")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ItemId { get; set; }
+        [Column(TypeName = "varchar(20)")]
         [Required]
         public string furnitureName { get; set; }
         [Required]
         public double price { get; set; }
-        [Column(TypeName = "varchar(6)")]
+        [Column(TypeName = "varchar(20)")]
         [Required]
         public string colour { get; set; }
-        [Column(TypeName = "varchar(10)")]
+        [Column(TypeName = "varchar(20)")]
         [Required]
         public string material { get; set; }
     }

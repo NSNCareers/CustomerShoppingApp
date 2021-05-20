@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CustomerShoppingApp.Data;
 using CustomerShoppingApp.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CustomerShoppingApp.Context
 {
@@ -24,6 +26,31 @@ namespace CustomerShoppingApp.Context
         public CustomerShoppingCartContext(DbContextOptions<CustomerShoppingCartContext> options)
             :base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Customer>();
+            modelBuilder.Entity<Address>();
+            modelBuilder.Entity<BankDetail>();
+            modelBuilder.Entity<Cloth>();
+            modelBuilder.Entity<Furniture>();
+            modelBuilder.Entity<Garden>();
+            modelBuilder.Entity<Item>();
+            modelBuilder.Entity<Shoe>();
+            modelBuilder.Entity<ShoppingCart>();
+
+            // Add data to DB
+            modelBuilder.SeedShoeData();
+            modelBuilder.SeedAddressData();
+            modelBuilder.SeedBankDetailData();
+            modelBuilder.SeedBItemData();
+            modelBuilder.SeedClothData();
+            modelBuilder.SeedCustomerData();
+            modelBuilder.SeedFurnitureData();
+            modelBuilder.SeedGardenData();
+            modelBuilder.SeedShoppingCartData();
         }
     }
 }

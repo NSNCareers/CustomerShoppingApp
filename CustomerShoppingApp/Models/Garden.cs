@@ -7,9 +7,12 @@ namespace CustomerShoppingApp.Models
     public class Garden
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        [Column(TypeName = "varchar(10)")]
+        [ForeignKey("Item")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ItemId { get; set; }
+        [Column(TypeName = "varchar(20)")]
         [Required]
         public string plantName { get; set; }
         [Required]

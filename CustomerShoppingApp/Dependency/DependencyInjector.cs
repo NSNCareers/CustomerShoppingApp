@@ -14,7 +14,7 @@ namespace CustomerShoppingApp.Dependency
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection ConfigureShoppingCartServices(this IServiceCollection services)
+        public static IServiceCollection ConfigureCustomerShoppingCartServices(this IServiceCollection services)
         {
             services.AddTransient<ICustomerShoppingCart, CustomerShoppingCart>();
             services.AddTransient<ICustomerData, CustomerData>();

@@ -7,15 +7,18 @@ namespace CustomerShoppingApp.Models
     public class Cloth
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
+        [ForeignKey("Item")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ItemId { get; set; }
         [Required]
         public double price { get; set; }
         [Required]
         public float size { get; set; }
-        [Column(TypeName = "varchar(10)")]
+        [Column(TypeName = "varchar(200)")]
         public string brand { get; set; }
-        [Column(TypeName = "varchar(12)")]
+        [Column(TypeName = "varchar(20)")]
         public string clothType { get; set; }
     }
 }
