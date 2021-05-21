@@ -1,4 +1,4 @@
-﻿using CustomerShoppingApp.DataContext;
+using CustomerShoppingApp.DataContext;
 using CustomerShoppingApp.Models;
 using CustomerShoppingApp.Token;
 using Microsoft.AspNetCore.Mvc;
