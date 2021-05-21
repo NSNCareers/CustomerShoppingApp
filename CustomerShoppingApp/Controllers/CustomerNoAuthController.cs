@@ -1,11 +1,8 @@
-﻿using CustomerShoppingApp.Context;
 using CustomerShoppingApp.DataContext;
 using CustomerShoppingApp.Models;
 using CustomerShoppingApp.Token;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
@@ -16,15 +13,13 @@ namespace CustomerShoppingApp.Controllers
     public class CustomerNoAuthController : ControllerBase
     {
         private readonly ICustomerShoppingCart _customerShoppingCart;
-        private readonly IUserTokenGenerator _userTokenGenerator;
 
-        public CustomerNoAuthController(ICustomerShoppingCart customerShoppingCart, IUserTokenGenerator userTokenGenerator)
+        public CustomerNoAuthController(ICustomerShoppingCart customerShoppingCart)
         {
             _customerShoppingCart = customerShoppingCart;
-            _userTokenGenerator = userTokenGenerator;
         }
 
-        [HttpGet("GetCustomerWithId/{id}")]
+        [HttpGet("GetCustomerWithId")]
         public async Task<IActionResult>  GetCustomerWithId([Required]int id)
         {
             var result = await _customerShoppingCart.GetCustomerWithID(id);
@@ -104,7 +99,7 @@ namespace CustomerShoppingApp.Controllers
             return result;
         }
 
-        [HttpGet("GetCustomersBankdetailsWithIdAndName/{id}")]
+        [HttpGet("GetCustomersBankdetailsWithIdAndName")]
         public async Task<IActionResult> GetCustomersBankdetailsWithIdAndName([Required] int id, [Required] string firstName)
         {
             var result = await _customerShoppingCart.GetCustomersBankdetails(id, firstName);

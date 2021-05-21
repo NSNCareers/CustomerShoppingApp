@@ -30,7 +30,7 @@ namespace CustomerShoppingApp.Controllers
             return Ok(results);
         }
 
-        [HttpGet("GetCustomerWithId/{id}")]
+        [HttpGet("GetCustomerWithId")]
         [Authorize]
         public async Task<IActionResult>  GetCustomerWithId([Required]int id)
         {
@@ -120,7 +120,7 @@ namespace CustomerShoppingApp.Controllers
             return result;
         }
 
-        [HttpGet("GetCustomersBankdetailsWithIdAndName/{id}")]
+        [HttpGet("GetCustomersBankdetailsWithIdAndName")]
         [Authorize]
         public async Task<IActionResult> GetCustomersBankdetailsWithIdAndName([Required] int id, [Required] string firstName)
         {
