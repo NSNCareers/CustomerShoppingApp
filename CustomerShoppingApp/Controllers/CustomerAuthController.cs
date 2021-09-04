@@ -21,7 +21,7 @@ namespace CustomerShoppingApp.Controllers
             _customerShoppingCart = customerShoppingCart;
             _userTokenGenerator = userTokenGenerator;
         }
-
+        //
         [HttpGet("GetUserLoginToken")]
         public IActionResult GetUserLoginToken()
         {
