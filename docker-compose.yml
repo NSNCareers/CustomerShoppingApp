@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  customershoppingapp:
-    image: ${DOCKER_REGISTRY-}customershoppingapp
-    build:
-      context: .
-      dockerfile: CustomerShoppingApp/Dockerfile
