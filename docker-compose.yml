@@ -1,0 +1,23 @@
+version: "3.3"
+services:
+  web:    
+    container_name: web
+    build:      
+      context: ..
+      dockerfile: CustomerShoppingApp\Dockerfile
+    depends_on: [ mssql ]        
+    ports:
+      - "8086:80"
+  mssql:
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: mssql
+    hostname: mssql
+    environment:
+      SA_PASSWORD: "reallyStrongPwd123"
+      ACCEPT_EULA: "Y"
+    restart: unless-stopped    
+    ports:
+      # So we can access the database
+      # From a tool like JetBrains Rider
+      # Optional for this demo
+      - "11437:1433" 

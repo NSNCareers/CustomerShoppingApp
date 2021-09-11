@@ -30,7 +30,7 @@ namespace CustomerShoppingApp
         public void ConfigureServices(IServiceCollection services)
         {
             //Connection string 
-            var conString = _configuration.GetConnectionString("CustomerShoppingCartDBConnection");
+            var conString = _configuration.GetConnectionString("mssql");
             // Secret Password
             var appSecret = _configuration.GetConnectionString("Secret");
 
