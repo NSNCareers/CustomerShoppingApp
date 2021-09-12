@@ -8,6 +8,9 @@ services:
     depends_on: [ mssql ]        
     ports:
       - "8086:80"
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+
   mssql:
     image: "mcr.microsoft.com/mssql/server"
     container_name: mssql
