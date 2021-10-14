@@ -1,6 +1,5 @@
 using CustomerShoppingApp.DataContext;
 using CustomerShoppingApp.Models;
-using CustomerShoppingApp.Token;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System.ComponentModel.DataAnnotations;
@@ -19,8 +18,8 @@ namespace CustomerShoppingApp.Controllers
             _customerShoppingCart = customerShoppingCart;
         }
 
-        [HttpGet("GetCustomerWithId")]
-        public async Task<IActionResult>  GetCustomerWithId([Required]int id)
+        [HttpGet("GetCustomerUsingId")]
+        public async Task<IActionResult>  GetCustomerUsingId([Required]int id)
         {
             var result = await _customerShoppingCart.GetCustomerWithID(id);
 
@@ -83,26 +82,26 @@ namespace CustomerShoppingApp.Controllers
             return result;
         }
 
-        [HttpGet("GetCustomersItemsWithIdAndName/{id}")]
-        public async Task<IActionResult> GetCustomersItemsWithIdAndName([Required] int id,[Required] string firstName)
+        [HttpGet("GetCustomersItemsWithId/{id}")]
+        public async Task<IActionResult> GetCustomersItemsWithId([Required] int id)
         {
-            var result = await _customerShoppingCart.GetCustomersItems(id,firstName);
+            var result = await _customerShoppingCart.GetCustomersItems(id);
 
             return result;
         }
 
-        [HttpGet("GetCustomersAddressWithIdAndName/{id}")]
-        public async Task<IActionResult> GetCustomersAddressWithIdAndName([Required] int id, [Required] string firstName)
+        [HttpGet("GetCustomersAddressWithId/{id}")]
+        public async Task<IActionResult> GetCustomersAddressWithId([Required] int id)
         {
-            var result = await _customerShoppingCart.GetCustomersAddress(id, firstName);
+            var result = await _customerShoppingCart.GetCustomersAddress(id);
 
             return result;
         }
 
-        [HttpGet("GetCustomersBankdetailsWithIdAndName")]
-        public async Task<IActionResult> GetCustomersBankdetailsWithIdAndName([Required] int id, [Required] string firstName)
+        [HttpGet("GetCustomersBankDetailsWithId")]
+        public async Task<IActionResult> GetCustomersBankDetailsWithId([Required] int id)
         {
-            var result = await _customerShoppingCart.GetCustomersBankdetails(id, firstName);
+            var result = await _customerShoppingCart.GetCustomersBankdetails(id);
 
             return result;
         }

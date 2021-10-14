@@ -30,15 +30,17 @@ namespace CustomerShoppingApp.Controllers
             return Ok(results);
         }
 
-        [HttpGet("GetCustomerWithId")]
+        
+        [HttpGet("GetCustomerUsingId")]
         [Authorize]
-        public async Task<IActionResult>  GetCustomerWithId([Required]int id)
+        public async Task<IActionResult> GetCustomerUsingId([Required]int id)
         {
             var result = await _customerShoppingCart.GetCustomerWithID(id);
 
             return result;
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("GetAllCustomers")]
         [Authorize]
         public async Task<IActionResult> GetAllCustomers()
@@ -48,6 +50,7 @@ namespace CustomerShoppingApp.Controllers
             return result;
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("GetAllActiveCustomers")]
         [Authorize]
         public async Task<IActionResult> GetAllActiveCustomers()
@@ -57,6 +60,7 @@ namespace CustomerShoppingApp.Controllers
             return result;
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("GetAllInActiveCustomers")]
         [Authorize]
         public async Task<IActionResult> GetAllInActiveCustomers()
@@ -93,6 +97,7 @@ namespace CustomerShoppingApp.Controllers
             return result;
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpPost("ChangeCustomerState")]
         [Authorize]
         public async Task<IActionResult> ChangeCustomerState([Required] int id)
@@ -102,29 +107,32 @@ namespace CustomerShoppingApp.Controllers
             return result;
         }
 
-        [HttpGet("GetCustomersItemsWithIdAndName/{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [HttpGet("GetCustomersItemsWithId/{id}")]
         [Authorize]
-        public async Task<IActionResult> GetCustomersItemsWithIdAndName([Required] int id,[Required] string firstName)
+        public async Task<IActionResult> GetCustomersItemsWithId([Required] int id)
         {
-            var result = await _customerShoppingCart.GetCustomersItems(id,firstName);
+            var result = await _customerShoppingCart.GetCustomersItems(id);
 
             return result;
         }
 
-        [HttpGet("GetCustomersAddressWithIdAndName/{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [HttpGet("GetCustomersAddressWithId/{id}")]
         [Authorize]
-        public async Task<IActionResult> GetCustomersAddressWithIdAndName([Required] int id, [Required] string firstName)
+        public async Task<IActionResult> GetCustomersAddressWithId([Required] int id)
         {
-            var result = await _customerShoppingCart.GetCustomersAddress(id, firstName);
+            var result = await _customerShoppingCart.GetCustomersAddress(id);
 
             return result;
         }
 
-        [HttpGet("GetCustomersBankdetailsWithIdAndName")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [HttpGet("GetCustomersBankDetailsWithId")]
         [Authorize]
-        public async Task<IActionResult> GetCustomersBankdetailsWithIdAndName([Required] int id, [Required] string firstName)
+        public async Task<IActionResult> GetCustomersBankDetailsWithId([Required] int id)
         {
-            var result = await _customerShoppingCart.GetCustomersBankdetails(id, firstName);
+            var result = await _customerShoppingCart.GetCustomersBankdetails(id);
 
             return result;
         }

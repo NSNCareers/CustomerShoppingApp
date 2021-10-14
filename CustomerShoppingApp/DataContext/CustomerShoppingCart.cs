@@ -263,15 +263,14 @@ namespace CustomerShoppingApp.DataContext
             return new BadRequestObjectResult("Customer cannot be null");
         }
 
-        public async Task<IActionResult> GetCustomersAddress(int id, string firstName)
+        public async Task<IActionResult> GetCustomersAddress(int id)
         {
             if (id != 0)
             {
                 try
                 {
-                    var customer = await _customerShoppingCartContext.Customers
-                        .Include(a => a.address)
-                        .Where(a => a.id == id && a.firstName == firstName)
+                    var customer = await _customerShoppingCartContext.Addresses
+                        .Where(x => x.id == id)
                         .AsNoTracking()
                         .FirstOrDefaultAsync();
                     if (customer != null)
@@ -280,7 +279,7 @@ namespace CustomerShoppingApp.DataContext
                     }
                     else
                     {
-                        return new OkObjectResult($"Customer with ID: {id} and FirstName {firstName} does not exist in database");
+                        return new OkObjectResult($"Customer with ID: {id} does not exist in database");
                     }
                 }
                 catch (Exception e)
@@ -292,19 +291,14 @@ namespace CustomerShoppingApp.DataContext
             return new BadRequestObjectResult("Customer Id cannot be null");
         }
 
-        public async Task<IActionResult> GetCustomersItems(int id, string firstName)
+        public async Task<IActionResult> GetCustomersItems(int id)
         {
             if (id != 0)
             {
                 try
                 {
-                    var customer = await _customerShoppingCartContext.Customers
-                        .Include(a => a.shoppingCart.item)
-                        .Include(a => a.shoppingCart.item.shoe)
-                        .Include(a => a.shoppingCart.item.garden)
-                        .Include(a => a.shoppingCart.item.furniture)
-                        .Include(a => a.shoppingCart.item.cloth)
-                        .Where(a => a.id == id && a.firstName == firstName)
+                    var customer = await _customerShoppingCartContext.Items
+                        .Where(x => x.id == id)
                         .AsNoTracking()
                         .FirstOrDefaultAsync();
                     if (customer != null)
@@ -313,7 +307,7 @@ namespace CustomerShoppingApp.DataContext
                     }
                     else
                     {
-                        return new OkObjectResult($"Customer with ID: {id} and FirstName {firstName} does not exist in database");
+                        return new OkObjectResult($"Customer with ID: {id} does not exist in database");
                     }
                 }
                 catch (Exception e)
@@ -324,15 +318,14 @@ namespace CustomerShoppingApp.DataContext
             }
             return new BadRequestObjectResult("Customer Id cannot be null");
         }
-        public async Task<IActionResult> GetCustomersBankdetails(int id, string firstName)
+        public async Task<IActionResult> GetCustomersBankdetails(int id)
         {
             if (id != 0)
             {
                 try
                 {
-                    var customer = await _customerShoppingCartContext.Customers
-                        .Include(a => a.address)
-                        .Where(a => a.id == id && a.firstName == firstName)
+                    var customer = await _customerShoppingCartContext.BankDetails
+                        .Where(a => a.id == id)
                         .AsNoTracking()
                         .FirstOrDefaultAsync();
                     if (customer != null)
@@ -341,7 +334,7 @@ namespace CustomerShoppingApp.DataContext
                     }
                     else
                     {
-                        return new OkObjectResult($"Customer with ID: {id} and FirstName {firstName} does not exist in database");
+                        return new OkObjectResult($"Customer with ID: {id}  does not exist in database");
                     }
                 }
                 catch (Exception e)

@@ -14,9 +14,9 @@ namespace CustomerShoppingApp.DataContext
         Task<IActionResult> ChangeState(int id);
         Task<IActionResult> GetActiveCustomers();
         Task<IActionResult> GetInActiveCustomers();
-        Task<IActionResult> GetCustomersItems(int id, string firstName);
-        Task<IActionResult> GetCustomersAddress(int id, string firstName);
-        Task<IActionResult> GetCustomersBankdetails(int id, string firstName);
+        Task<IActionResult> GetCustomersItems(int id);
+        Task<IActionResult> GetCustomersAddress(int id);
+        Task<IActionResult> GetCustomersBankdetails(int id);
 
     }
 }
